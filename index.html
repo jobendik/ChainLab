@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <title>Chain Lab — a chain-reaction puzzle</title>
+    <meta
+      name="description"
+      content="Chain Lab — guide a tiny maintenance robot to route an energy pulse through lab modules and power up the Final Core last."
+    />
+    <meta name="theme-color" content="#05070f" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="stage">
+      <canvas id="game"></canvas>
+
+      <div class="hud">
+        <div class="badge">
+          <span id="levelNum">01</span>
+          <span class="lblwrap"><small>Chamber</small><span id="levelName">—</span></span>
+        </div>
+        <div class="spacer"></div>
+        <canvas id="gauge" width="64" height="64"></canvas>
+        <div class="spacer"></div>
+        <div class="tools">
+          <button class="tool" id="legendBtn">Modules</button>
+          <button class="tool" id="hintBtn">Hint</button>
+          <button class="tool" id="resetBtn">Reset</button>
+          <button class="tool" id="muteBtn">&#9834; Sound</button>
+        </div>
+      </div>
+
+      <div id="toast"></div>
+
+      <div id="legend">
+        <div class="legend-head"><h3>Lab Modules</h3><button id="legendClose">&times;</button></div>
+        <div id="legendList"></div>
+      </div>
+
+      <div id="pad">
+        <div class="dpad">
+          <div class="btn gap"></div>
+          <div class="btn" id="bU">&#9650;</div>
+          <div class="btn gap"></div>
+          <div class="btn" id="bL">&#9664;</div>
+          <div class="btn gap"></div>
+          <div class="btn" id="bR">&#9654;</div>
+          <div class="btn gap"></div>
+          <div class="btn" id="bD">&#9660;</div>
+          <div class="btn gap"></div>
+        </div>
+        <div class="acts">
+          <div class="btn abtn" id="bP"><b>PULSE</b><span>activate</span></div>
+          <div class="btn abtn" id="bG"><b>GRAB</b><span>carry / drop</span></div>
+        </div>
+      </div>
+
+      <!-- TITLE -->
+      <div class="overlay" id="title">
+        <div class="card">
+          <div class="eyebrow">A chain-reaction puzzle</div>
+          <h1>CHAIN <span class="b">LAB</span></h1>
+          <p class="lead">
+            A tiny maintenance robot is sealed inside a test chamber. Rearrange the signal modules
+            so a single pulse routes through the whole system and powers the golden
+            <b>Final Core</b> <i>last</i> — that springs the exit. Mind the gaps, the Blast Cells,
+            and the draining power.
+          </p>
+          <button class="cta" id="startBtn">Enter the Lab</button>
+          <div class="keys">
+            <kbd>&larr;</kbd> <kbd>&rarr;</kbd> turn / walk &nbsp;·&nbsp; <kbd>&uarr;</kbd>
+            <kbd>&darr;</kbd> climb &nbsp;·&nbsp; <kbd>Z</kbd> grab/drop &nbsp;·&nbsp; <kbd>X</kbd>
+            pulse<br />
+            <kbd>R</kbd> reset &nbsp;·&nbsp; <kbd>H</kbd> hint &nbsp;·&nbsp; <kbd>M</kbd> sound
+          </div>
+        </div>
+      </div>
+
+      <!-- INTRO -->
+      <div class="overlay" id="intro">
+        <div class="card">
+          <div class="chip" id="introNum">Chamber 1</div>
+          <h2 id="introName">—</h2>
+          <p class="lead" id="introHint">—</p>
+          <button class="cta" id="introBtn">Begin</button>
+        </div>
+      </div>
+
+      <!-- CLEAR -->
+      <div class="overlay" id="clear">
+        <div class="card">
+          <div class="eyebrow">Pulse routed</div>
+          <h2 id="clearTitle">Chamber Cleared</h2>
+          <p class="lead" id="clearSub">—</p>
+          <button class="cta" id="clearBtn">Next Chamber</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
